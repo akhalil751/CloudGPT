@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Login Form | CloudGPT</title> 
+    <link rel="stylesheet" href="../static/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="title"><span>CloudGPT Login</span></div>
+        <form id="loginForm">
+          <div class="row">
+            <i class="fas fa-user"></i>
+            <input id="loginEmail" type="text" placeholder="Email or Phone" required>
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input id="loginPassword" type="password" placeholder="Password" required>
+          </div>
+          <div class="row button">
+            <input type="button" value="Login" onclick="login()">
+          </div>
+          <div class="signup-link">Not a member? <a href="signup.html">Signup now</a></div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+        async function login() {
+          const email = document.getElementById('loginEmail').value;
+          const password = document.getElementById('loginPassword').value;
+  
+          const response = await fetch('https://your-api-gateway-url/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+          });
+  
+          const data = await response.json();
+          console.log(data);
+  
+          if (response.ok) {
+            // Redirect to chat.html on successful login
+            window.location.href = 'chat.html';
+          } else {
+            // Handle error, show a message, etc.
+            console.error('Login failed');
+          }
+        }
+      </script>
+  </body>
+</html>
