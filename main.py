@@ -4,8 +4,8 @@ from flask import Flask, render_template, request, jsonify
 import os
 
 
-genai.configure(api_key='AIzaSyDEnyGH3cc0CpMIbN5za9NSxWrF7rh765Y')
-client = OpenAI(api_key="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")
+genai.configure(api_key='xxxxx')
+client = OpenAI(api_key="sk-xxxxxx")
 
 model = genai.GenerativeModel('gemini-pro')
 
